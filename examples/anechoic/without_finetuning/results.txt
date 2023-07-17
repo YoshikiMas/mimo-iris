@@ -1,0 +1,11 @@
+id: (440_423-440_423_440o0311_0.50963_423c0205_-0.50963_anechoic-1)
+Scores: (#C #S #D #I) 12 0 0 2
+REF:  *** ***** in certain cases ,comma the cards are given free to subscribers .period 
+HYP:  THE OTHER in certain cases ,comma the cards are given free to subscribers .period 
+Eval: I   I                                                                             
+
+id: (440_423-440_423_440o0311_0.50963_423c0205_-0.50963_anechoic-2)
+Scores: (#C #S #D #I) 9 1 0 3
+REF:  the other was MITSUBISHI motors corporation's u. s. sales operation ** *********** ******* 
+HYP:  the other was INSUPER    motors corporation's u. s. sales operation TO SUBSCRIBERS .PERIOD 
+Eval:               S                                                     I  I           I       

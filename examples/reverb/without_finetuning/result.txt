@@ -1,0 +1,11 @@
+id: (050_22g-050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb-1)
+Scores: (#C #S #D #I) 16 1 0 1
+REF:  the statue of liberty and ** ELLIS island are within the new jersey waters of new york bay 
+HYP:  the statue of liberty and L. S.    island are within the new jersey waters of new york bay 
+Eval:                           I  S                                                             
+
+id: (050_22g-050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb-2)
+Scores: (#C #S #D #I) 10 1 0 0
+REF:  the population lives by HERDING goats and sheep or by trading 
+HYP:  the population lives by HURTING goats and sheep or by trading 
+Eval:                         S                                                               

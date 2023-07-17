@@ -1,0 +1,11 @@
+id: (440_423-440_423_440o0311_0.50963_423c0205_-0.50963_anechoic-1)
+Scores: (#C #S #D #I) 12 0 0 0
+REF:  in certain cases ,comma the cards are given free to subscribers .period 
+HYP:  in certain cases ,comma the cards are given free to subscribers .period 
+Eval:                                                                         
+
+id: (440_423-440_423_440o0311_0.50963_423c0205_-0.50963_anechoic-2)
+Scores: (#C #S #D #I) 10 0 0 0
+REF:  the other was mitsubishi motors corporation's u. s. sales operation 
+HYP:  the other was mitsubishi motors corporation's u. s. sales operation 
+Eval:                                                                     

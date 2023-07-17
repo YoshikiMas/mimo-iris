@@ -1,0 +1,254 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Exploring the Integration of Speech Separation and Recognition with Self-Supervised
+Learning Representation</title>
+      <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+      
+      
+      <!-- <link rel="shortcut icon" href="../../images/taco.png"> -->
+      <script>
+         function play(path) {{
+           var player = document.getElementById('player');
+           player.src = path;
+           player.play();
+         }}
+      </script>
+      <style>
+         .audio-cell {
+         /* Center audio widgets in the table cell. */
+         text-align: center;
+         padding-bottom: 1px;
+         padding-top: 1px;
+         }
+         .audio-cell-padded {
+         text-align: center;
+         padding-bottom: 10px;
+         padding-top: 10px;
+         }
+         .audio-header {
+         /* Don't wrap header text. */
+         white-space: nowrap;
+         /* Some breaking space between headers for readability. */
+         padding-right: 5px;
+         padding-left: 5px;
+         }
+         .reference-cell {
+         /* For uniformity and to wrap long reference text, limit the reference cell's width. */
+         width: 25%;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .sample audio {
+         vertical-align: middle;
+         padding-left: 3px;
+         padding-right: 3px;
+         }
+         .round-button {
+         box-sizing: border-box;
+         display:block;
+         width:30px;
+         height:30px;
+         padding-top: 8px;
+         padding-left: 3px;
+         line-height: 6px;
+         border: 1.2px solid #000;
+         border-radius: 50%;
+         color: #000;
+         text-align:center;
+         background-color: rgba(0,0,0,0.00);
+         font-size:6px;
+         box-shadow: 0px 0px 2px rgba(0,0,0,1);
+         transition: all 0.2s ease;
+         }
+         .round-button:hover {
+         background-color: rgba(0,0,0,0.0);
+         box-shadow: 0px 0px 4px rgba(0,0,0,1);
+         }
+         .round-button:active {
+         background-color: rgba(0,0,0,0.01);
+         box-shadow: 0px 0px 1px rgba(0,0,0,1);
+         }
+      </style>
+   </head>
+
+   <body>
+     <div class="main">
+       <article>
+         <header>
+            <h1>Exploring the Integration of Speech Separation and Recognition with Self-Supervised
+Learning Representation [<a href="">paper</a>]</h1>
+         </header>
+      </article>
+      <div>
+        <p><b>Authors:</b>
+           Yoshiki Masuyama<sup>1*</sup>,
+           Xuankai Chang<sup>2*</sup>,
+           Wangyou Zhang<sup>3</sup>,
+           Samuele Cornell<sup>4</sup>,
+           Zhong-Qiu Wang<sup>2</sup>,
+           Nobutaka Ono<sup>1</sup>,
+           Yanmin Qian<sup>3</sup>,
+           Shinji Watanabe<sup>2</sup>,
+        </p>
+        <p><b>Affiliation:</b>
+          <sup>1</sup>Tokyo Metropolitan University, Japan,
+          <sup>2</sup>Carnegie Mellon University, USA,
+          <sup>3</sup>Shanghai Jiao Tong University, China,
+          <sup>4</sup>Università Politecnica delle Marche, Italy,
+       </p>
+      </div>
+      <p><b>Abstract:</b>
+        Neural speech separation has made remarkable progress and its integration with automatic speech recognition (ASR) is an important direction towards realizing multi-speaker ASR.
+This work provides an insightful investigation of speech separation in reverberant and noisy-reverberant scenarios as an ASR front-end.
+In detail, we explore multi-channel separation methods, mask-based beamforming and complex spectral mapping, as well as the best features to use in the ASR back-end model.
+We employ the recent self-supervised learning representation (SSLR) as a feature and improve the recognition performance from the case with filterbank features.
+To further improve multi-speaker recognition performance, we present a carefully designed training strategy for integrating speech separation and recognition with SSLR.
+The proposed integration using TF-GridNet-based complex spectral mapping and WavLM-based SSLR achieves a 2.5% word error rate in reverberant WHAMR! test set, significantly outperforming an existing mask-based MVDR beamforming and filterbank integration (28.9%).
+      </p>
+      <p><b>Accepted to:</b>
+        IEEE Workshop on Applications of Signal Processing to Audio and Acoustics, Mohonk Mountain House, New Paltz, NY, USA, Oct 22-25, 2023
+      </p>
+
+      <p><b>Audio examples:</b>
+        <a href="#chime">Spatialized WSJ0-2mix anechoic examples</a>,
+        <a href="#reverb">Spatialized WSJ0-2mix reverberant examples</a><br>
+      </p>
+
+  <h2 id="chime">Spatialized WSJ0-2mix anechoic examples (440o0311_0.50963_423c0205_-0.50963.wav)</h2>
+  <table style="width:100%">
+    <tr>
+        <td align="left"> 
+		<b>Input mixture (channel 0)</b><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/mix_440o0311_0.50963_423c0205_-0.50963.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/mix_440o0311_0.50963_423c0205_-0.50963.wav"></audio>
+        </td>
+      <tr>
+        <td align="left">
+		<b>Oracle source spk1 (Channel 0)</b><br />
+  		<b>Oracle transcript for spk1: </b><I>in certain cases ,comma the cards are given free to subscribers .period.</I><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/oracle/spk1_440o0311_0.50963_423c0205_-0.50963.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/oracle/spk1_440o0311_0.50963_423c0205_-0.50963.wav"></audio>
+        <td align="left">
+		<b>Oracle source spk2 (Channel 0)</b><br />
+  		<b>Oracle transcript for spk2: </b><I>the other was mitsubishi motors corporation's u. s. sales operation.</I><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/oracle/spk2_440o0311_0.50963_423c0205_-0.50963.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/oracle/spk2_440o0311_0.50963_423c0205_-0.50963.wav"></audio>
+        </p>
+        </td>
+
+      <tr>
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w/o joint fine-tuning), spk1 (channel 0)</b><br />
+  		<b>Predicted transcript for spk1: </b><I><span style="color:red">  THE OTHER  </span> in certain cases ,comma the cards are given free to subscribers .period.</I><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/without_finetuning/spk1_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/without_finetuning/spk1_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.wav"></audio>
+
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w/o joint fine-tuning), spk2 (channel 0)</b><br />
+  		<b>Predicted transcript for spk2: </b><I> the other was <span style="color:red">  INSUPER  </span> motors corporation's u. s. sales operation <span style="color:red">  TO SUBSCRIBERS .PERIOD  </span>.</I><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/without_finetuning/spk2_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/without_finetuning/spk2_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.wav"></audio>
+        </p>
+        </td>
+      <tr>
+        <td align="left"> 
+		<b>TTF-GridNet + WavLM ASR (w joint fine-tuning), spk1 (channel 0)</b><br />
+  		<b>Predicted transcript for spk1: </b><I>in certain cases ,comma the cards are given free to subscribers .period.</I><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/with_finetuning/spk1_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/with_finetuning/spk1_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.wav"></audio>
+
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w joint fine-tuning), spk2 (channel 0)</b><br />
+  		<b>Predicted transcript for spk2: </b><I>the other was mitsubishi motors corporation's u. s. sales operation.</I><br />
+        <p style="text-align: center">
+          <img src="examples/anechoic/with_finetuning/spk2_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/anechoic/with_finetuning/spk2_440_423_440o0311_0.50963_423c0205_-0.50963_anechoic.wav"></audio>
+        </p>
+        </td>
+    </tr>
+  </table>
+  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <h2 id="reverb">Spatialized WSJ0-2mix reverberant examples (050a0511_2.4737_22ga010g_-2.4737.wav)</h2>
+
+  <table style="width:100%">
+    <tr>
+        <td align="left">
+		<b>Input mixture (channel 0)</b><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/mix_050a0511_2.4737_22ga010g_-2.4737.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/mix_050a0511_2.4737_22ga010g_-2.4737.wav"></audio>
+        </td>
+      <tr>
+        <td align="left">
+		<b>Oracle source spk1 (channel 0)</b><br />
+  		<b>Oracle transcript for spk1: </b><I>the statue of liberty and ellis island are within the new jersey waters of new york bay.</I><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/oracle/spk1_050a0511_2.4737_22ga010g_-2.4737.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/oracle/spk1_050a0511_2.4737_22ga010g_-2.4737.wav"></audio>
+        <td align="left">
+		<b>Oracle source spk2 (channel 0)</b><br />
+  		<b>Oracle transcript for spk2: </b><I>the population lives by herding goats and sheep or by trading.</I><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/oracle/spk2_050a0511_2.4737_22ga010g_-2.4737.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/oracle/spk2_050a0511_2.4737_22ga010g_-2.4737.wav"></audio>
+        </p>
+        </td>
+
+      <tr>
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w/o joint fine-tuning), spk1 (channel 0)</b><br />
+  		<b>Predicted transcript for spk1: </b><I>the statue of liberty and <span style="color:red">  L. S.  </span> island are within the new jersey waters of new york bay.</I><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/without_finetuning/spk1_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/without_finetuning/spk1_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.wav"></audio>
+
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w/o joint fine-tuning), spk2 (channel 0)</b><br />
+  		<b>Predicted transcript for spk2: </b><I>the population lives by <span style="color:red">  HURTING  </span> goats and sheep or by trading.</I><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/without_finetuning/spk2_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/without_finetuning/spk2_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.wav"></audio>
+        </p>
+        </td>
+      <tr>
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w joint fine-tuning), spk1 (channel 0)</b><br />
+  		<b>Predicted transcript for spk1: </b><I>the statue of liberty and ellis island are within the new jersey waters of new york bay.</I><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/with_finetuning/spk1_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/with_finetuning/spk1_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.wav"></audio>
+
+        <td align="left">
+		<b>TF-GridNet + WavLM ASR (w joint fine-tuning), spk2 (channel 0)</b><br />
+  		<b>Predicted transcript for spk2: </b><I>the population lives by herding goats and sheep or by trading.</I><br />
+        <p style="text-align: center">
+          <img src="examples/reverb/with_finetuning/spk2_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.png" width="600" alt=""/> <br />
+          <audio controls=""><source src="examples/reverb/with_finetuning/spk2_050_22g_050a0511_2.4737_22ga010g_-2.4737_reverb.wav"></audio>
+        </p>
+        </td>
+    </tr>
+  </table>
+  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <h3 id="references">References:</h3>
+        <p>
+        [1] Z. -Q. Wang, J. Le Roux and J. R. Hershey, "Multi-Channel Deep Clustering: Discriminative Spectral and Spatial Embeddings for Speaker-Independent Speech Separation," Proc. IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2018, pp. 1-5. [<a href="https://doi.org/10.1109/ICASSP.2018.8461639">paper</a>] <br>
+        [2] Z. -Q. Wang, S. Cornell, S. Choi, Y. Lee, B. Y. Kim, S. Watanabe, "TF-GridNet: Integrating Full-and Sub-Band Modeling for Speech Separation," arXiv preprint arXiv:2211.12433 2022. [<a href="https://arxiv.org/abs/2211.12433">paper</a>] <br>
+        [3] S. Chen et al., "WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech Processing," IEEE Journal of Selected Topics in Signal Processing, vol. 16, no. 6, pp. 1505-1518, 2022. [<a href="https://doi.org/10.1109/JSTSP.2022.3188113">paper</a>] <br>
+        [4] S. Kim, T. Hori and S. Watanabe, "Joint CTC-attention based end-to-end speech recognition using multi-task learning," Proc. IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2017, pp. 4835-4839. [<a href="https://doi.org/10.1109/ICASSP.2017.7953075">paper</a>]
+      </p>
+
+</div>
+</body>
+</html>
